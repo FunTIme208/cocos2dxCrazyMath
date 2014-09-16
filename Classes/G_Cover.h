@@ -9,8 +9,6 @@
 #ifndef __CrazyMath__G_Cover__
 #define __CrazyMath__G_Cover__
 
-#define TAG_COVER 100
-
 #include <iostream>
 #include "cocos2d.h"
 
@@ -27,6 +25,12 @@ public:
     void closeCallback(CCObject *pSender);
     
     CREATE_FUNC(G_Cover);
+
+private:
+    static const int S_Producer = 100;
+    static const int S_Specification = 101;
+    
+
 };
 
 #endif /* defined(__CrazyMath__G_Cover__) */

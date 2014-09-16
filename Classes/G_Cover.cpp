@@ -8,6 +8,7 @@
 
 #include "G_Cover.h"
 #include "HelloWorldScene.h"
+#include "G_Producer.h"
 
 USING_NS_CC;
 
@@ -15,7 +16,7 @@ CCScene* G_Cover::scene()
 {
     CCScene *scene = CCScene::create();
     G_Cover *layer = G_Cover::create();
-    scene->addChild(layer, 0, TAG_COVER);
+    scene->addChild(layer, 0);
     return scene;
 }
 
@@ -35,11 +36,11 @@ bool G_Cover::init()
         CCMenuItemImage *startGame = CCMenuItemImage::create("images/button/button0.png", "images/button/button0over.png", this, menu_selector(G_Cover::startGameCallback));
         startGame->setPosition(ccp(0, -50));
         
-        CCMenuItemImage *producer = CCMenuItemImage::create("images/button/button1.png", "images/button/button1over.png", this, menu_selector(G_Cover::producerCallback));
-        producer->setPosition(ccp(-180, -180));
+        CCMenuItemImage *specification = CCMenuItemImage::create("images/button/button1.png", "images/button/button1over.png", this, menu_selector(G_Cover::specificationCallback));
+        specification->setPosition(ccp(-180, -180));
         
-        CCMenuItemImage *specification = CCMenuItemImage::create("images/button/button2.png", "images/button/button2over.png", this, menu_selector(G_Cover::specificationCallback));
-        specification->setPosition(ccp(180, -180));
+        CCMenuItemImage *producer = CCMenuItemImage::create("images/button/button2.png", "images/button/button2over.png", this, menu_selector(G_Cover::producerCallback));
+        producer->setPosition(ccp(180, -180));
         
         CCMenuItemImage *closeGame = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this, menu_selector(G_Cover::closeCallback));
         closeGame->setScale(1.5f);
@@ -65,12 +66,16 @@ void G_Cover::startGameCallback(CCObject *pSender)
 
 void G_Cover::producerCallback(CCObject *pSender)
 {
-    
+    G_Producer::stateId = S_Producer;
+    this->removeFromParent();
+    CCDirector::sharedDirector()->getRunningScene()->addChild(G_Producer::create());
 }
 
 void G_Cover::specificationCallback(CCObject *pSender)
 {
-    
+    G_Producer::stateId = S_Specification;
+    this->removeFromParent();
+    CCDirector::sharedDirector()->getRunningScene()->addChild(G_Producer::create());
 }
 
 void G_Cover::closeCallback(CCObject *pSender)
