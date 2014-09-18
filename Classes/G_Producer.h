@@ -21,13 +21,11 @@ public:
     void coverCallback(CCObject *pSender);
     void gameCallback(CCObject *pSender);
     
-    static int stateId;
+    //页面显示判断
+    void pageLable();
     
     CREATE_FUNC(G_Producer);
     
-private:
-    static const int S_Producer = 100;
-    static const int S_Specification = 101;
 };
 
 #endif /* defined(__CrazyMath__G_Producer__) */

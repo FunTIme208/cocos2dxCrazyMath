@@ -13,11 +13,11 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
-class Userdata :public CCObject
+class Userdata
 {
 public:
     static Userdata *sharedUserdata();
-    virtual bool init();
+//    virtual bool init();
     virtual ~Userdata();
     
     int modeId;

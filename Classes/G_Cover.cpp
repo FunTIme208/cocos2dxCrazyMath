@@ -9,6 +9,7 @@
 #include "G_Cover.h"
 #include "HelloWorldScene.h"
 #include "G_Producer.h"
+#include "Userdata.h"
 
 USING_NS_CC;
 
@@ -66,14 +67,14 @@ void G_Cover::startGameCallback(CCObject *pSender)
 
 void G_Cover::producerCallback(CCObject *pSender)
 {
-    G_Producer::stateId = S_Producer;
+    Userdata::sharedUserdata()->modeId = Userdata::MODE_PRODUCER;
     this->removeFromParent();
     CCDirector::sharedDirector()->getRunningScene()->addChild(G_Producer::create());
 }
 
 void G_Cover::specificationCallback(CCObject *pSender)
 {
-    G_Producer::stateId = S_Specification;
+    Userdata::sharedUserdata()->modeId = Userdata::MODE_SPECIFICATION;
     this->removeFromParent();
     CCDirector::sharedDirector()->getRunningScene()->addChild(G_Producer::create());
 }

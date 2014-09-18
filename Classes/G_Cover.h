@@ -26,11 +26,6 @@ public:
     
     CREATE_FUNC(G_Cover);
 
-private:
-    static const int S_Producer = 100;
-    static const int S_Specification = 101;
-    
-
 };
 
 #endif /* defined(__CrazyMath__G_Cover__) */
