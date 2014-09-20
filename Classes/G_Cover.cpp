@@ -7,9 +7,9 @@
 //
 
 #include "G_Cover.h"
-#include "HelloWorldScene.h"
 #include "G_Producer.h"
 #include "Userdata.h"
+#include "G_Level.h"
 
 USING_NS_CC;
 
@@ -61,8 +61,7 @@ void G_Cover::startGameCallback(CCObject *pSender)
 {
     this->removeFromParent();
     
-    HelloWorld *helloLayer = HelloWorld::create();
-    CCDirector::sharedDirector()->getRunningScene()->addChild(helloLayer);
+    CCDirector::sharedDirector()->getRunningScene()->addChild(G_Level::create());
 }
 
 void G_Cover::producerCallback(CCObject *pSender)
@@ -81,6 +80,12 @@ void G_Cover::specificationCallback(CCObject *pSender)
 
 void G_Cover::closeCallback(CCObject *pSender)
 {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT) || (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
+	CCMessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
+#else
     CCDirector::sharedDirector()->end();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
+#endif
+#endif
 }

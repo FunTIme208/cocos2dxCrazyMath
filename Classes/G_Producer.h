@@ -11,6 +11,9 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "cocos-ext.h"
+
+USING_NS_CC_EXT;
 
 class G_Producer : public cocos2d::CCLayer
 {
@@ -23,6 +26,10 @@ public:
     
     //页面显示判断
     void pageLable();
+    
+    //CCScrollView
+//    void scrollViewDidScroll(CCScrollView* view);
+//	void scrollViewDidZoom(CCScrollView* view);
     
     CREATE_FUNC(G_Producer);
     
